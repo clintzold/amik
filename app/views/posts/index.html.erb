@@ -1,2 +1,30 @@
 <h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<section id="new_post">
+  <div>
+    <%= form_with model: @new_post do |form| %>
+      <div class="field">
+        <%= form.label :body %>
+        <%= form.text_area :body %>
+      </div>
+      <%= form.submit "Create Post" %>
+    <% end %>
+  </div>
+</section>
+
+<section id="posts">
+  <div>
+    <% @posts.each do |post| %>
+      <div>
+        <h4><%= post.user.email %></h4>
+        <div>
+          <p>
+            <%= post.body %>
+          </p>
+        </div>
+        <div>
+          <p>Comments: <% post.comments.length %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

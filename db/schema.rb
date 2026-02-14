@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_14_082457) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_14_180708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string "body"
     t.datetime "created_at", null: false
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.bigint "post_id", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_14_082457) do
   create_table "posts", force: :cascade do |t|
     t.string "body"
     t.datetime "created_at", null: false
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
