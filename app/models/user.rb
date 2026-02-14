@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   # Associations
   has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 end
