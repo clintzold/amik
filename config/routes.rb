@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "likes/create"
+  get "likes/destroy"
 
   resources :posts do
     resources :comments, shallow: true
