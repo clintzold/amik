@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   post "likes", to: "likes#toggle"
 
-  resources :posts do
-    resources :comments, shallow: true
-  end
+  resources :posts
+
+  resources :comments
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

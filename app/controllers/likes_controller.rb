@@ -22,7 +22,6 @@ class LikesController < ApplicationController
 
   def increment_counter
     @likeable.with_lock do 
-      @likeable.reload
       @likeable.increment!(:likes_counter)
     end
   end
@@ -32,7 +31,6 @@ class LikesController < ApplicationController
     like.destroy
 
     @likeable.with_lock do
-      @likeable.reload
       @likeable.decrement!(:likes_counter)
     end
   end

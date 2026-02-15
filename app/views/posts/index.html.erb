@@ -24,7 +24,27 @@
         <div>
           <p>Comments: <%= post.comments.length %></p>
           <p>Likes: <%= post.likes_counter %></p>
-          <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
+        </div>
+        <div>
+          <% post.comments.each do |comment| %>
+            <div>
+              <p><%= comment.body %></p>
+            </div>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model: @new_comment do |form| %>
+            <%= form.hidden_field :commentable_id, value: post.id %>
+            <%= form.hidden_field :commentable_type, value: "Post" %>
+            <div class="field">
+              <%= form.label :body %>
+              <%= form.text_field :body %>
+            </div>
+            <div>
+              <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
+              <%= form.submit "leave a comment" %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

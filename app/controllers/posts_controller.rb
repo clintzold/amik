@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:comments).all.order(created_at: :desc)
     @new_post = Post.new
+    @new_comment = Comment.new
   end
 
   def create
