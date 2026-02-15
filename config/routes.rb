@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get "likes/create"
-  get "likes/destroy"
+  post "likes", to: "likes#toggle"
 
   resources :posts do
     resources :comments, shallow: true

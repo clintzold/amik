@@ -23,7 +23,8 @@
         </div>
         <div>
           <p>Comments: <%= post.comments.length %></p>
-          <p>Likes: <%= post.likes %></p>
+          <p>Likes: <%= post.likes_counter %></p>
+          <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
         </div>
       </div>
     <% end %>

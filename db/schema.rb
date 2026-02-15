@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_14_192849) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_14_201805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_14_192849) do
     t.bigint "commentable_id"
     t.string "commentable_type"
     t.datetime "created_at", null: false
-    t.integer "likes", default: 0
+    t.integer "likes_counter", default: 0
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_14_192849) do
   create_table "posts", force: :cascade do |t|
     t.string "body"
     t.datetime "created_at", null: false
-    t.integer "likes", default: 0
+    t.integer "likes_counter", default: 0
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
