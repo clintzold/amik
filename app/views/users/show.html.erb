@@ -3,4 +3,7 @@
   <p><%= @user.first_name + " " + @user.last_name %></p>
   <p><%= @user.email %></p>
   <p>Followers: <%= @user.followers.length %> Following: <%= @user.following.length %></p>
+  <% if @user == current_user %>
+    <%= link_to "Edit Profile", edit_user_path %>
+  <% end %>
 </div>

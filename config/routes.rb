@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "users/:id", to: "users#show", as: "user"
-  get "users", to: "users#index"
+  resources :users
+
   post "likes", to: "likes#toggle"
 
   resources :posts
