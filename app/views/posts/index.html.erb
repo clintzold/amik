@@ -3,8 +3,7 @@
   <div>
     <%= form_with model: @new_post do |form| %>
       <div class="field">
-        <%= form.label :body %>
-        <%= form.text_area :body %>
+        <%= form.text_field :body, placeholder: "Write a new post..." %>
       </div>
       <%= form.submit "Create Post" %>
     <% end %>
@@ -15,20 +14,24 @@
   <div>
     <% @posts.each do |post| %>
       <div>
-        <h4><%= post.user.email %></h4>
+        <h4><%= post.user.first_name + " " + post.user.last_name %></h4>
         <div>
           <p>
             <%= post.body %>
           </p>
         </div>
-        <div>
-          <p>Comments: <%= post.comments.length %></p>
+        <div style="display:flex; align-items: center; gap: 10px;">
+          <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
           <p>Likes: <%= post.likes_counter %></p>
+          <p>Comments: <%= post.comments.length %></p>
         </div>
         <div>
           <% post.comments.each do |comment| %>
             <div>
-              <p><%= comment.body %></p>
+              <p><%= comment.user.first_name + " " + comment.user.last_name %></p>
+              <div>
+                <p><%= comment.body %></p>
+              </div>
             </div>
           <% end %>
         </div>
@@ -37,12 +40,8 @@
             <%= form.hidden_field :commentable_id, value: post.id %>
             <%= form.hidden_field :commentable_type, value: "Post" %>
             <div class="field">
-              <%= form.label :body %>
-              <%= form.text_field :body %>
-            </div>
-            <div>
-              <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
-              <%= form.submit "leave a comment" %>
+              <%= form.text_field :body, placeholder: "Leave a comment..." %>
+              <%= form.submit "Submit comment" %>
             </div>
           <% end %>
         </div>
