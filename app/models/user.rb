@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
 
+  # Images Associations
+  has_one_attached :avatar
+  has_many_attached :images
   # Outgoing follow request associations
   has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :active_follows, source: :followed

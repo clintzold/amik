@@ -1,11 +1,20 @@
 <h1>Users#show</h1>
-<div>
-  <p><%= @user.first_name + " " + @user.last_name %></p>
-  <p><%= @user.email %></p>
-  <p>Followers: <%= @user.followers.length %> Following: <%= @user.following.length %></p>
+<section>
+  <div>
+    <%= image_tag @user.avatar.variant(resize_to_limit: [250, 250]) %>
+  </div>
+  <div>
+    <p><%= @user.first_name + " " + @user.last_name %></p>
+    <p><%= @user.email %></p>
+    <p>Followers: <%= @user.followers.length %> Following: <%= @user.following.length %></p>
 
-  <% if @user == current_user %>
-    <%= link_to "Edit Profile", edit_user_path %>
-  <% end %>
+    <% if @user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path %>
+    <% end %>
 
-</div>
+  </div>
+</section>
+
+<section id="user_posts">
+  <%= render "shared/posts", posts: @user.posts, new_comment: @new_comment %>
+</section>

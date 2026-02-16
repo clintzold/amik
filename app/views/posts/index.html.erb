@@ -11,41 +11,5 @@
 </section>
 
 <section id="posts">
-  <div>
-    <% @posts.each do |post| %>
-      <div>
-        <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", user_path(post.user) %></h4>
-        <div>
-          <p>
-            <%= post.body %>
-          </p>
-        </div>
-        <div style="display:flex; align-items: center; gap: 10px;">
-          <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
-          <p>Likes: <%= post.likes_counter %></p>
-          <p>Comments: <%= post.comments.length %></p>
-        </div>
-        <div>
-          <% post.comments.each do |comment| %>
-            <div>
-              <p><%= comment.user.first_name + " " + comment.user.last_name %></p>
-              <div>
-                <p><%= comment.body %></p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div>
-          <%= form_with model: @new_comment do |form| %>
-            <%= form.hidden_field :commentable_id, value: post.id %>
-            <%= form.hidden_field :commentable_type, value: "Post" %>
-            <div class="field">
-              <%= form.text_field :body, placeholder: "Leave a comment..." %>
-              <%= form.submit "Submit comment" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render "shared/posts", posts: @posts, new_comment: @new_comment %>
 </section>
