@@ -9,4 +9,24 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
+
+  # Outgoing follow request associations
+  has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_follows, source: :followed
+  # Incoming follow request associations
+  has_many :passive_follows, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_follows, source: :followed
+
+  # Helper methods for requests
+  def follow(other_user)
+    active_follows.create(followed: other_user)
+  end
+
+  def unfollow(other_user)
+    active_follows.find_by(followed: other_user).destroy
+  end
+
+  def pending_followers
+    followers.where(follows: {accepted: false})
+  end
 end

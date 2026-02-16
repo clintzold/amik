@@ -14,7 +14,7 @@
   <div>
     <% @posts.each do |post| %>
       <div>
-        <h4><%= post.user.first_name + " " + post.user.last_name %></h4>
+        <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", user_path(post.user) %></h4>
         <div>
           <p>
             <%= post.body %>

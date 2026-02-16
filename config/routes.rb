@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "users/:id", to: "users#show", as: "user"
+  get "users", to: "users#index"
   post "likes", to: "likes#toggle"
 
   resources :posts
@@ -6,6 +8,12 @@ Rails.application.routes.draw do
   resources :comments
 
   devise_for :users
+
+  resources :follows, only: [:create, :destroy] do
+    member do
+      patch :accept
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
