@@ -1,16 +1,25 @@
-<div class="card">
+<div style="width: 800px;">
   <% posts.each do |post| %>
-    <div>
-      <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", user_path(post.user) %></h4>
+    <div class="card">
+      <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", user_path(post.user), class: "title" %></h4>
+      <div class="image-collection">
+        <% if post.images.attached? %>
+          <% post.images.each do |image| %>
+            <div class="img-card">
+              <%= image_tag image.variant(resize_to_limit: [200,200]), class: "profile-image" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
       <div>
         <p>
           <%= post.body %>
         </p>
       </div>
       <div style="display:flex; align-items: center; gap: 10px;">
-        <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id} %>
-        <p>Likes: <%= post.likes_counter %></p>
-        <p>Comments: <%= post.comments.length %></p>
+        <%= button_to "like", likes_path, params: {likeable_type: "Post", likeable_id: post.id}, class: "btn" %>
+        <p><small>Likes: <%= post.likes_counter %></small></p>
+        <p><small>Comments: <%= post.comments.length %></small></p>
       </div>
       <div>
         <%= form_with model: new_comment do |form| %>
@@ -22,16 +31,24 @@
           </div>
         <% end %>
       </div>
-      <div class="card" style="margin: 10px;">
-        <% post.comments.each do |comment| %>
-          <div>
-            <p><%= comment.user.first_name + " " + comment.user.last_name %></p>
-            <div>
-              <p><%= comment.body %></p>
+      <% if post.comments.any? %>
+        <div class="card" style="margin: 10px;">
+          <% post.comments.each do |comment| %>
+
+            <div class="comment">
+              <div class="comment-details">
+                <h5><%= link_to "#{comment.user.first_name + ' ' + comment.user.last_name}", user_path(post.user), class: "title" %></h5>
+                <p><%= comment.body %></p>
+              </div>
+              <div class="likes-box">
+                <p><small>Likes: <%= comment.likes.length %></small></p>
+                <%= button_to "like", likes_path, params: {likeable_type: "Comment", likeable_id: comment.id}, class: "btn" %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+
+          <% end %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

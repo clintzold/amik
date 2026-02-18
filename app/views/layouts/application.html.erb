@@ -25,11 +25,7 @@
 
   <body>
     <navbar>
-      <ul>
-        <li><%= link_to "Home", posts_path %></li>
-        <li><%= link_to "People", users_path %></li>
-        <li><%= button_to "Log Out", destroy_user_session_path %></li>
-      </ul>
+      <%= button_to "Log Out", destroy_user_session_path, class: "btn submit" %>
     </navbar>
     <%= yield %>
   </body>
