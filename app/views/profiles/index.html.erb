@@ -1,7 +1,7 @@
-<h1>Users#index</h1>
+<h1>Profiles#index</h1>
 <% @users.each do |user| %>
   <div>
-    <p><%= link_to "#{user.first_name + " " + user.last_name}", user_path(user) %></p>
+    <p><%= link_to "#{user.first_name + " " + user.last_name}", profile_path(user) %></p>
     <%= button_to "Follow", follows_path, params: {followed_id: user.id} %>
   </div>
 <% end %>

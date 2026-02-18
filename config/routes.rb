@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :profiles
 
-  resources :users
+  devise_for :users
 
   post "likes", to: "likes#toggle"
 

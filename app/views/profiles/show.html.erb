@@ -27,7 +27,7 @@
       <p>Followers: <%= @user.followers.length %> Following: <%= @user.following.length %></p>
 
       <% if @user == current_user %>
-        <%= link_to "Edit Profile", edit_user_path %>
+        <%= link_to "Edit Profile", edit_profile_path %>
       <% end %>
     </div>
 

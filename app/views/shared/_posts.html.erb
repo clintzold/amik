@@ -1,7 +1,7 @@
 <div style="width: 800px;">
   <% posts.each do |post| %>
     <div class="card">
-      <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", user_path(post.user), class: "title" %></h4>
+      <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", profile_path(post.user), class: "title" %></h4>
       <div class="image-collection">
         <% if post.images.attached? %>
           <% post.images.each do |image| %>
@@ -37,7 +37,7 @@
 
             <div class="comment">
               <div class="comment-details">
-                <h5><%= link_to "#{comment.user.first_name + ' ' + comment.user.last_name}", user_path(post.user), class: "title" %></h5>
+                <h5><%= link_to "#{comment.user.first_name + ' ' + comment.user.last_name}", profile_path(comment.user), class: "title" %></h5>
                 <p><%= comment.body %></p>
               </div>
               <div class="likes-box">

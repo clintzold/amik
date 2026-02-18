@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @new_comment = Comment.new
