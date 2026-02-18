@@ -1,16 +1,43 @@
-<h1>Users#show</h1>
 <section>
-  <div>
-    <%= image_tag @user.avatar.variant(resize_to_limit: [250, 250]) %>
-  </div>
-  <div>
-    <p><%= @user.first_name + " " + @user.last_name %></p>
-    <p><%= @user.email %></p>
-    <p>Followers: <%= @user.followers.length %> Following: <%= @user.following.length %></p>
+  <div class="profile-background-container">
 
-    <% if @user == current_user %>
-      <%= link_to "Edit Profile", edit_user_path %>
+    <% if @user.background.attached? %>
+      <%= image_tag @user.background, class: "profile-image" %>
+    <% else %>
+      <%= image_tag "default_background.jpg", class: "profile-image" %>
     <% end %>
+
+    <div class="profile-avatar-container">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(:medium), class: "profile-image"%>
+      <% else %>
+        <%= image_tag "default_avatar.jpg", size: "300x300", class: "profile-image" %>
+      <% end %>
+    </div>
+
+  </div>
+</section>
+
+<section id="user_info">
+  <div class="flex-container">
+
+    <div class="card">
+      <p><%= @user.first_name + " " + @user.last_name %></p>
+      <p><%= @user.email %></p>
+      <p>Followers: <%= @user.followers.length %> Following: <%= @user.following.length %></p>
+
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_path %>
+      <% end %>
+    </div>
+
+    <div class="card flex-container">
+      <% if current_user.following?(@user) %>
+        <%= button_to "Unfollow", follow_path, method: :delete, params: {followed_id: @user.id} %>
+      <% else %>
+        <%= button_to "Follow", follows_path, params: {followed_id: @user.id} %>
+      <% end %>
+    </div>
 
   </div>
 </section>

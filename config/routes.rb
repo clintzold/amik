@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :users
 
   post "likes", to: "likes#toggle"
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  devise_for :users
 
   resources :follows, only: [:create, :destroy] do
     member do

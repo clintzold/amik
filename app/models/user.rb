@@ -11,7 +11,11 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
 
   # Images Associations
-  has_one_attached :avatar
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100,100]
+    attachable.variant :medium, resize_to_limit: [300,300]
+  end
+  has_one_attached :background
   has_many_attached :images
   # Outgoing follow request associations
   has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
@@ -31,5 +35,9 @@ class User < ApplicationRecord
 
   def pending_followers
     followers.where(follows: {accepted: false})
+  end
+
+  def following?(other_user)
+    active_follows.where(followed_id: other_user).exists?
   end
 end
