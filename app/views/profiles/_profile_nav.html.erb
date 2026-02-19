@@ -1,0 +1,12 @@
+<a href="<%= profile_path(user) %>">
+  <div class="profile-nav-container">
+      <div class="profile-avatar-preview">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar.variant(:thumb), class: "profile-image"%>
+        <% else %>
+          <%= image_tag "default_avatar.jpg", size: "300x300", class: "profile-image" %>
+        <% end %>
+      </div>
+      <h4 class="title"><%= user.first_name + ' ' + user.last_name %></h4>
+  </div>
+</a>

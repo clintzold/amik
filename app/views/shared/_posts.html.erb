@@ -1,7 +1,7 @@
 <div style="width: 800px;">
   <% posts.each do |post| %>
     <div class="card">
-      <h4><%= link_to "#{post.user.first_name + ' ' + post.user.last_name}", profile_path(post.user), class: "title" %></h4>
+      <%= render "profiles/profile_nav", user: post.user %>
       <div class="image-collection">
         <% if post.images.attached? %>
           <% post.images.each do |image| %>
