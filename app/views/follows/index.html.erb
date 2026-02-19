@@ -1,0 +1,26 @@
+<section id="follows">
+  <div class="followers-container card">
+    <h2 class="title">Trapped!</h2>
+    <% if @follows.any? %>
+      <% @follows.each do |follow| %>
+        <div>
+          <%= render "profiles/profile_nav", user: follow.follower %>
+          <% if !follow.accepted %>
+              <%= button_to "Trap 'em!", accept_follow_path(follow), method: :patch, class: "btn submit" %>
+          <% end %>
+          <%= button_to "Release 'em!", follow_path(follow), method: :delete, class: "btn" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="following-container card">
+    <% if @following.any? %>
+      <% @following.each do |follow| %>
+        <div>
+          <%= render "profiles/profile_nav", user: follow.followed %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

@@ -31,6 +31,19 @@ navbar {
   padding: 5px 10px;
 }
 
+.nav-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.notification-icon {
+  width: 30px;
+  height: 50px;
+  fill: var(--secondary-color);
+  cursor: pointer;
+}
+
 #user_posts {
   display:flex;
   justify-content: center;

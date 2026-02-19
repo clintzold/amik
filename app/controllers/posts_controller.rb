@@ -2,7 +2,13 @@ class PostsController < ApplicationController
   before_action :set_post, except: [:index, :create]
 
   def index
-    @posts = Post.includes(:comments).all.order(created_at: :desc)
+    followings = Follow.where(follower_id: current_user.id, accepted: true)
+    followed_posts = Post.includes(:comments).where(user_id: followings.map(&:followed_id))
+
+    # Amalgamate posts in sorted order by most recent
+    @posts = (followed_posts + current_user.posts.includes(:comments)).sort_by! { |post| -post[:created_at].to_i }
+
+    # Provide models for new posts and comments
     @new_post = Post.new
     @new_comment = Comment.new
   end

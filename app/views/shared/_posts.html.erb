@@ -37,7 +37,7 @@
 
             <div class="comment">
               <div class="comment-details">
-                <h5><%= link_to "#{comment.user.first_name + ' ' + comment.user.last_name}", profile_path(comment.user), class: "title" %></h5>
+                <%= render "profiles/profile_nav", user: comment.user %>
                 <p><%= comment.body %></p>
               </div>
               <div class="likes-box">

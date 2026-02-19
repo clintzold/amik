@@ -66,3 +66,5 @@ group :test do
 end
 
 gem "devise", "~> 5.0"
+
+gem "inline_svg", "~> 1.10"

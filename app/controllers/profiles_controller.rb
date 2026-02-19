@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to profile_path(@user)
     else
       render :edit, status: :unprocessable_content
     end

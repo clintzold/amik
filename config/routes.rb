@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :comments
 
 
-  resources :follows, only: [:create, :destroy] do
+  resources :follows, only: [:create, :destroy, :index] do
     member do
       patch :accept
     end
