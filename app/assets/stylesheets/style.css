@@ -193,6 +193,18 @@ navbar {
   text-decoration: none;
 }
 
+.blue {
+  background-color: blue;
+}
+
+#follows {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
 #logo {
   display: flex;
   flex-direction: column;
@@ -212,4 +224,8 @@ navbar {
 #devise-section {
   display: flex;
   justify-content: center;
+}
+
+.follows-container {
+  width: 400px;
 }

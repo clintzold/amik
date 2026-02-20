@@ -33,11 +33,15 @@ class User < ApplicationRecord
     active_follows.find_by(followed: other_user).destroy
   end
 
+  def remove_follower(other_user)
+    passive_follows.find_by(follower: other_user).destroy
+  end
+
   def pending_followers
     followers.where(follows: {accepted: false})
   end
 
   def following?(other_user)
-    active_follows.where(followed_id: other_user).exists?
+    active_follows.where(followed: other_user).exists?
   end
 end

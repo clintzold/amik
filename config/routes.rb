@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   resources :comments
 
 
-  resources :follows, only: [:create, :destroy, :index] do
+  resources :follows, only: [:index] do
     member do
       patch :accept
     end
   end
+  post "follows/:id", to: "follows#create", as: "follow"
+  delete "unfollow/:id", to: "follows#unfollow", as: :unfollow
+  delete "deny/:id", to: "follows#deny", as: :deny
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
