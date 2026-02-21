@@ -38,7 +38,7 @@ navbar {
 }
 
 .notification-icon {
-  width: 30px;
+  width: 50px;
   height: 50px;
   fill: var(--secondary-color);
   cursor: pointer;
@@ -62,6 +62,12 @@ navbar {
 .post-box {
   width: clamp(20vw, 500px, 80vw);
   height: 100px;
+}
+
+.follows-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 #posts {
@@ -133,13 +139,13 @@ navbar {
 .profile-nav-container {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   padding-bottom: 10px;
 }
 
 .profile-avatar-preview {
-  width: 50px;
-  height: 50px;
+  width: clamp(5vw, 50px, 6vw);
+  height: clamp(5vw, 50px, 6vw);
   overflow: hidden;
   border-radius: 50%;
   box-shadow: 1px 1px 2px black;
@@ -153,8 +159,8 @@ navbar {
 }
 
 .profile-avatar-container {
-  width: 150px;
-  height: 150px;
+  width: clamp(10vw, 150px, 20vw);
+  height: clamp(10vw, 150px, 20vw);
   position: absolute;
   bottom: 5px;
   left: 5px;
