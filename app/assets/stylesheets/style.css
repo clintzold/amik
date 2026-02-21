@@ -16,6 +16,10 @@ button {
   background-color: var(--button-color);
 }
 
+.field {
+  margin-bottom: 20px;
+}
+
 section {
   margin-bottom: 20px;
 }
@@ -142,6 +146,7 @@ navbar {
   gap: 10px;
   padding-bottom: 10px;
 }
+
 
 .profile-avatar-preview {
   width: clamp(5vw, 50px, 6vw);

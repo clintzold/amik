@@ -1,8 +1,8 @@
 class FollowsController < ApplicationController
   def index
-    @requests = Follow.where(followed_id: current_user.id, accepted: false).order(:desc)
+    @requests = Follow.where(followed_id: current_user.id, accepted: false).order(created_at: :desc)
     @followers = Follow.where(followed_id: current_user.id).order(accepted: :asc)
-    @following = Follow.where(follower_id: current_user.id).order(accepted: :asc)
+    @following = current_user.active_follows.where(accepted: true)
   end
 
   def create

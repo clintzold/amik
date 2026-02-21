@@ -1,25 +1,30 @@
-<h1>Edit Profile</h1>
-<div class="card">
-  <%= form_with model: @user, url: profile_path do |form| %>
-    <div class="field">
-      <%= form.label :avatar, "Profile Picture" %>
-      <%= form.file_field :avatar %>
-    </div>
-    <div class="field">
-      <%= form.label :background, "Profile Background" %>
-      <%= form.file_field :background %>
-    </div>
-    <div class="field">
-      <%= form.label :first_name %>
-      <%= form.text_field :first_name %>
-      <%= form.label :last_name %>
-      <%= form.text_field :last_name %>
-    </div>
+<section class="list-section">
+  <div class="card">
+    <h1 class="title">Edit Profile</h1>
+    <%= form_with model: @user, url: profile_path do |form| %>
+      <div class="field">
+        <%= form.label :avatar, "Profile Picture" %>
+        <%= form.file_field :avatar %>
+      </div>
+      <div class="field">
+        <%= form.label :background, "Profile Background" %>
+        <%= form.file_field :background %>
+      </div>
+      <div class="field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name %>
+      </div>
 
-    <div class="field">
-      <%= form.label :email %>
-      <%= form.email_field :email %>
-    </div>
-    <%= form.submit "Save Changes" %>
-  <% end %>
-</div>
+      <div class="field">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+      </div>
+      <%= form.submit "Save Changes", class: "btn submit" %>
+    <% end %>
+  </div>
+</section>
