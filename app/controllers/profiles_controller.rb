@@ -1,11 +1,14 @@
 class ProfilesController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:avatar_attachment, :background_attachment).find(params[:id])
     @new_comment = Comment.new
   end
 
   def index
-    @users = User.all
+    excluded_profiles = current_user.following.map(&:id)
+    excluded_profiles << current_user.id
+    @unfollowed = User.where.not(id: excluded_profiles)
+    @followed = current_user.following
   end
 
   def edit

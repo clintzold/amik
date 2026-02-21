@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :profiles
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   post "likes", to: "likes#toggle"
 

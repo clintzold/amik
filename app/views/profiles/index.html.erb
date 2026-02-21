@@ -1,8 +1,27 @@
-<h1>Profiles#index</h1>
-<% @users.each do |user| %>
-  <div>
-    <p><%= link_to "#{user.first_name + " " + user.last_name}", profile_path(user) %></p>
-    <%= button_to "Follow", follows_path, params: {followed_id: user.id} %>
+<section class="list-section">
+
+  <div class="follows-container card">
+    <h2 class="title">Following</h2>
+      <% @followed.each do |user| %>
+        <div class="comment" style="align-items:center;">
+          <%= render "profiles/profile_nav", user: user %>
+          <div>
+            <%= button_to "Unfollow", unfollow_path(user), method: :delete, class: "btn blue" %>
+          </div>
+        </div>
+      <% end %>
   </div>
-<% end %>
-<p>Find me in app/views/users/index.html.erb</p>
+
+  <div class="follows-container card">
+    <h2 class="title">Not Following</h2>
+      <% @unfollowed.each do |user| %>
+        <div class="comment" style="align-items:center;">
+          <%= render "profiles/profile_nav", user: user %>
+          <div>
+            <%= button_to "Follow", follow_path(user), class: "btn submit" %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+</section>
