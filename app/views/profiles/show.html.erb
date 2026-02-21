@@ -15,9 +15,11 @@
       <% end %>
     </div>
 
-    <a href="<%= follows_path %>" class="follows-link">
-      <%= inline_svg_tag "bear-trap-svgrepo-com.svg", class: "notification-icon" %>
-    </a>
+    <% if current_user == @user %>
+      <a href="<%= follows_path %>" class="follows-link">
+        <%= inline_svg_tag "bear-trap-svgrepo-com.svg", class: "notification-icon" %>
+      </a>
+    <% end %>
 
   </div>
 </section>
