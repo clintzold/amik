@@ -85,6 +85,10 @@ navbar {
   align-items: center;
 }
 
+.return-button {
+  width: clamp(10vw, 75px, 15vw);
+}
+
 .hidden-field {
   display: none;
 }
@@ -156,8 +160,8 @@ navbar {
 
 
 .profile-avatar-preview {
-  width: clamp(8vw, 50px, 10vw);
-  height: clamp(8vw, 50px, 10vw);
+  width: clamp(2vh, 50px, 6vh);
+  height: clamp(2vh, 50px, 6vh);
   overflow: hidden;
   border-radius: 50%;
   box-shadow: 0px 0px 3px black;
