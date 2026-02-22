@@ -2,7 +2,7 @@
   <div class="profile-background-container">
 
     <% if @user.background.attached? %>
-      <%= image_tag @user.background, class: "profile-image" %>
+      <%= image_tag @user.background.variant(:profile_background), class: "profile-image" %>
     <% else %>
       <%= image_tag "default_background.jpg", class: "profile-image" %>
     <% end %>

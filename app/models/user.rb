@@ -15,7 +15,9 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100,100]
     attachable.variant :medium, resize_to_limit: [300,300]
   end
-  has_one_attached :background
+  has_one_attached :background do |attachable|
+    attachable.variant :profile_background, resize_to_limit: [1920, 1920], saver: {quality: 60}
+  end
   has_many_attached :images
   # Outgoing follow request associations
   has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
