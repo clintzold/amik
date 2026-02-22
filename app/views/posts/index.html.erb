@@ -13,11 +13,13 @@
     <%= form_with model: @new_post do |form| %>
       <%= form.text_area :body, placeholder: "Write a new post...", class: "post-box" %>
       <div class="post-buttons-container">
-        <%= form.submit "Create Post", class: "btn submit" %>
-        <div class="field">
-          <%= form.label :images, "Add Image", class: "upload-button btn" %>
+
+        <div>
+          <%= form.label :images, "Add Image", class: "blue btn" %>
           <%= form.file_field :images, class: "hidden-field", multiple: true, accept: "image/png, image/jpeg" %>
         </div>
+
+        <%= form.submit "Create Post", class: "btn submit" %>
       </div>
     <% end %>
   </div>

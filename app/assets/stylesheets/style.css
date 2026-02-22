@@ -82,6 +82,7 @@ navbar {
 .post-buttons-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .hidden-field {
