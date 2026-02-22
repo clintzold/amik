@@ -37,7 +37,7 @@
         <div class="comment" style="align-items:center;">
           <%= render "profiles/profile_nav", user: follow.follower %>
           <div>
-            <%= button_to "Unfollow", unfollow_path(follow.follower), method: :delete, class: "btn blue" %>
+            <%= button_to "Release 'em!", unfollow_path(follow.follower), method: :delete, class: "btn blue" %>
           </div>
         </div>
       <% end %>
