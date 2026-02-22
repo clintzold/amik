@@ -88,8 +88,8 @@ production:
   primary: &primary_production
     <<: *default
     database: amik_production
-    username: amik
-    password: <%= ENV["AMIK_DATABASE_PASSWORD"] %>
+    username: clint
+    password: <%= Rails.application.credentials.dig(:production, :db_password) %>
   cache:
     <<: *primary_production
     database: amik_production_cache
