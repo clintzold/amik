@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   def show
-    @user = User.includes(:avatar_attachment, :background_attachment).find(params[:id])
+    @user = User.includes(:avatar_attachment, :background_attachment, :posts).find(params[:id])
     @new_comment = Comment.new
   end
 

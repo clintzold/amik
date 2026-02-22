@@ -49,5 +49,5 @@
 </section>
 
 <section id="user_posts">
-  <%= render "shared/posts", posts: @user.posts, new_comment: @new_comment %>
+  <%= render "shared/posts", posts: @user.posts.order(created_at: :desc), new_comment: @new_comment %>
 </section>
