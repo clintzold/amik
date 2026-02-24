@@ -89,6 +89,9 @@ production:
     <<: *default
     url: <%= Rails.application.credentials.dig(:production, :database_url) %>
     database: amik_production
+    username: clint
+    password: <%= Rails.application.credential.dig(:production, :db_password)
+    host: 127.0.0.1
   cache:
     <<: *primary_production
     database: amik_production_cache
