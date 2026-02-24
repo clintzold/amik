@@ -87,10 +87,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    url: <%= Rails.application.credentials.dig(:production, :database_url) %>
-    database: amik_production
-    username: clint
-    password: <%= Rails.application.credential.dig(:production, :db_password)
+    database: <%= ENV['POSTGRES_DB'] %>
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    host: <%= ENV['DB_HOST'] %>
   cache:
     <<: *primary_production
     database: amik_production_cache

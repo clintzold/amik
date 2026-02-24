@@ -45,10 +45,9 @@ env:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
   clear:
-    POSTGRES_USER: "clint"
-    POSTGRES_DB: "amik_production"
-    DB_HOST: postgres
-    DB_PORT: 5432
+    POSTGRES_USER: clint
+    POSTGRES_DB: amik_production
+    DB_HOST: amik-postgres
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
     SOLID_QUEUE_IN_PUMA: true
@@ -105,15 +104,12 @@ builder:
 # Use accessory services (secrets come from .kamal/secrets).
 accessories:
   postgres:
-    image: postgres:16.2
+    image: postgres:15
     host: 31.97.209.135
-    port: "127.0.0.1:5432:5432"
     env:
       clear:
         POSTGRES_USER: clint
         POSTGRES_DB: amik_production
-        DB_HOST: amik-postgres
-        DB_PORT: 5432
       secret:
         - POSTGRES_PASSWORD
     directories:
