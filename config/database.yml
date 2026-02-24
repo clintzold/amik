@@ -87,9 +87,8 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    url: <%= Rails.application.credentials.dig(:production, :database_url) %>
     database: amik_production
-    username: clint
-    password: <%= Rails.application.credentials.dig(:production, :db_password) %>
   cache:
     <<: *primary_production
     database: amik_production_cache

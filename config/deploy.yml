@@ -103,20 +103,23 @@ builder:
 #   user: app
 
 # Use accessory services (secrets come from .kamal/secrets).
-# accessories:
 accessories:
   postgres:
-     image: postgres:16.2
-     roles:
-      - web
-     env:
-       clear:
-          POSTGRES_USER: "clint"
-          POSTGRES_DB: "amik_production"
-       secret:
-         - POSTGRES_PASSWORD
-     directories:
-       - data:/var/lib/postgresql/data
+    image: postgres:16.2
+    host: 31.97.209.135
+    port: "127.0.0.1:5432:5432"
+    env:
+      clear:
+        POSTGRES_USER: clint
+        POSTGRES_DB: amik_production
+        DB_HOST: 127.0.0.1
+        DB_PORT: 5432
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
+    files:
+      - db/production_setup.sql:/docker-entrypoint-initdb.d/setup.sql
 #   redis:
 #     image: valkey/valkey:8
 #     host: 192.168.0.2
