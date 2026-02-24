@@ -108,6 +108,7 @@ accessories:
        clear:
           POSTGRES_USER: "clint"
           POSTGRES_DB: "amik_production"
+          DB_PORT: 5432
        secret:
          - POSTGRES_PASSWORD
      directories:
