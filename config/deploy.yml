@@ -112,7 +112,7 @@ accessories:
       clear:
         POSTGRES_USER: clint
         POSTGRES_DB: amik_production
-        DB_HOST: 127.0.0.1
+        DB_HOST: amik-postgres
         DB_PORT: 5432
       secret:
         - POSTGRES_PASSWORD
