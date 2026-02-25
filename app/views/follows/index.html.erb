@@ -35,7 +35,7 @@
     <% if @following.any? %>
       <% @following.each do |follow| %>
         <div class="comment" style="align-items:center;">
-          <%= render "profiles/profile_nav", user: follow.follower %>
+          <%= render "profiles/profile_nav", user: follow.followed %>
           <div>
             <%= button_to "Release 'em!", unfollow_path(follow.follower), method: :delete, class: "btn blue" %>
           </div>

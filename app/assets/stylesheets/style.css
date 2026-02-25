@@ -86,7 +86,7 @@ navbar {
 }
 
 .return-button {
-  width: clamp(10vw, 75px, 12vw);
+  width: clamp(5vw, 75px, 12vw);
 }
 
 .hidden-field {
